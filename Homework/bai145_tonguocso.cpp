@@ -1,27 +1,25 @@
 #include<stdio.h>
 #include<math.h>
-#include<string.h>
-
-int tong(int n){
-	int sum = 0;
-    for(int i = 2; i <= n; i++){
-        while(n % i == 0){
-            n /= i;
-            sum += i;
-        }
-    }
-    return sum;
-}
 
 int main(){
-	int n;
-	scanf("%d",&n);
-	int a[n], sum = 0;;
-	for(int i = 0 ; i < n ; i++ ){
-		scanf("%d",&a[i]);
-		sum += tong(a[i]);
+	int t;
+	scanf("%d",&t);
+	long long tong=0;
+	while(t--){
+		int n;
+		scanf("%d",&n);
+		int p;
+		while(n%2==0 ){
+			tong +=2;
+			n=n/2;
+		}
+		for( p=3;p<=sqrt(n);p+=2){
+			while(n%p==0 ){
+				tong +=p;
+				n=n/p;
+			}
+		}
+		if(n>1) tong+=n;
 	}
-	printf("%d",sum);
-	return 0;
+	printf("%lld",tong);
 }
-
